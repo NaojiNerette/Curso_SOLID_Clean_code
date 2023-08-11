@@ -5,12 +5,11 @@
     // includes? arrays?
     function isRedFruit( fruit: string ): boolean {
         
-        let redFruits = ['manzana','cereza','ciruela'];
-        
+        const redFruits = ['manzana','cereza','ciruela'];
         return (redFruits.includes(fruit));
     }
 
-    function getFruitsByColor( color: string ): string[] {
+    function getFruitsByColor1( color: string ): string[] {
 
         switch(color){
             case 'red': 
@@ -24,7 +23,22 @@
         }
     }
 
-    // Simplificar esta función
+    type FruitColor = 'red'|'yellow'|'purple';
+    function getFruitsByColor( color: FruitColor ): string[] {
+
+        const fruitByColors = {
+            red:    ['manzana','fresa'],
+            yellow: ['piña','banana'],
+            purple: ['moras','uvas']
+        }
+
+        if(!Object.keys( fruitByColors ).includes(color)) 
+            throw Error('the color must be: red, yellow, purple');
+
+        return fruitByColors[color];
+    }
+
+
     let isFirstStepWorking  = true;
     let isSecondStepWorking = true;
     let isThirdStepWorking  = true;
